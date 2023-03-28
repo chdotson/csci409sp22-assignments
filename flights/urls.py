@@ -13,4 +13,6 @@ urlpatterns = [
     # NOTICE: the airport_code param in the url matches
     # the param in the airport_info func
     path('/search/<str:origin>/<str:destination>', views.flight_search),
+    # New route added
+    path('/search/', views.search),
 ]
