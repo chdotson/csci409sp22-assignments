@@ -5,6 +5,9 @@ from django.shortcuts import render
 from .models import Flight
 from .forms import FlightForm
 
+from django.contrib.auth.decorators import login_required
+
+@login_required
 def index(request):
     # Create instance
     form = FlightForm()
@@ -16,6 +19,7 @@ def index(request):
     # flight_list = ', '.join([f.origin.airport_code + "->" + f.destination.airport_code for f in flights])
     # return HttpResponse('Listing all flights: ' + flight_list)
 
+@login_required
 def flight_search(request, origin, destination):
     origin = Airport.objects.get(airport_code=origin)
     destination = Airport.objects.get(airport_code=destination)
